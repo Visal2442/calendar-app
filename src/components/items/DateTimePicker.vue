@@ -1,130 +1,105 @@
 <template>
-  <v-form>
-    <v-row>
-      <v-col>
-        <v-row>
-          <!-- Date picker  -->
-          <v-col>
-            <v-menu
-              ref="dateMenu"
-              v-model="dateMenu"
-              :close-on-content-click="false"
-              :return-value.sync="date"
-            >
-              <template v-slot:activator="{ on }">
-                <v-text-field
-                  v-model="date"
-                  label="Start Date"
-                  prepend-icon="mdi-calendar"
-                  v-on="on"
-                >
-                </v-text-field>
-              </template>
-              <v-date-picker v-model="date">
-                <v-spacer></v-spacer>
-                <v-btn text color="primary" @click="dateMenu = false">
-                  Cancel
-                </v-btn>
-                <v-btn text color="primary" @click="$refs.dateMenu.save(date)">
-                  OK
-                </v-btn>
-              </v-date-picker>
-            </v-menu>
-          </v-col>
-          <!-- Time picker  -->
-          <v-col>
-            <v-menu
-              ref="timeMenu"
-              v-model="timeMenu"
-              :close-on-content-click="false"
-              :return-value.sync="time"
-            >
-              <template #activator="{ on }">
-                <v-text-field
-                  v-model="time"
-                  label="Start Time"
-                  prepend-icon="mdi-calendar"
-                  v-on="on"
-                >
-                </v-text-field>
-              </template>
-              <v-time-picker v-model="time">
-                <v-spacer></v-spacer>
-                <v-btn text color="primary" @click="timeMenu = false">
-                  Cancel
-                </v-btn>
-                <v-btn text color="primary" @click="$refs.timeMenu.save(time)">
-                  OK
-                </v-btn>
-              </v-time-picker>
-            </v-menu>
-          </v-col>
-        </v-row>
-      </v-col>
-      <v-spacer></v-spacer>
-      <!-- End Datetime  -->
-      <v-col>
-        <v-row>
-          <!-- Date picker  -->
-          <v-col>
-            <v-menu
-              ref="dateMenu"
-              v-model="dateMenu"
-              :close-on-content-click="false"
-              :return-value.sync="date"
-            >
-              <template v-slot:activator="{ on }">
-                <v-text-field
-                  v-model="date"
-                  label="Start Date"
-                  prepend-icon="mdi-calendar"
-                  v-on="on"
-                >
-                </v-text-field>
-              </template>
-              <v-date-picker v-model="date">
-                <v-spacer></v-spacer>
-                <v-btn text color="primary" @click="dateMenu = false">
-                  Cancel
-                </v-btn>
-                <v-btn text color="primary" @click="$refs.dateMenu.save(date)">
-                  OK
-                </v-btn>
-              </v-date-picker>
-            </v-menu>
-          </v-col>
-          <!-- Time picker  -->
-          <v-col>
-            <v-menu
-              ref="timeMenu"
-              v-model="timeMenu"
-              :close-on-content-click="false"
-              :return-value.sync="time"
-            >
-              <template #activator="{ on }">
-                <v-text-field
-                  v-model="time"
-                  label="Start Time"
-                  prepend-icon="mdi-calendar"
-                  v-on="on"
-                >
-                </v-text-field>
-              </template>
-              <v-time-picker v-model="time">
-                <v-spacer></v-spacer>
-                <v-btn text color="primary" @click="timeMenu = false">
-                  Cancel
-                </v-btn>
-                <v-btn text color="primary" @click="$refs.timeMenu.save(time)">
-                  OK
-                </v-btn>
-              </v-time-picker>
-            </v-menu>
-          </v-col>
-        </v-row>
-      </v-col>
-    </v-row>
-  </v-form>
+  <v-card>
+    <!-- Date picker  -->
+    <v-menu
+      ref="dateMenu"
+      v-model="dateMenu"
+      :close-on-content-click="false"
+      :return-value.sync="date"
+    >
+      <template v-slot:activator="{ on }">
+        <v-text-field
+          v-model="date"
+          label="Start Date"
+          prepend-icon="mdi-calendar"
+          v-on="on"
+        >
+        </v-text-field>
+      </template>
+      <v-date-picker v-model="date">
+        <v-spacer></v-spacer>
+        <v-btn text color="primary" @click="dateMenu = false"> Cancel </v-btn>
+        <v-btn text color="primary" @click="$refs.dateMenu.save(date)">
+          OK
+        </v-btn>
+      </v-date-picker>
+    </v-menu>
+    <!-- Time picker  -->
+    <v-menu
+      ref="timeMenu"
+      v-model="timeMenu"
+      :close-on-content-click="false"
+      :return-value.sync="time"
+    >
+      <template #activator="{ on }">
+        <v-text-field
+          v-model="time"
+          label="Start Time"
+          prepend-icon="mdi-calendar"
+          v-on="on"
+        >
+        </v-text-field>
+      </template>
+      <v-time-picker v-model="time">
+        <v-spacer></v-spacer>
+        <v-btn text color="primary" @click="timeMenu = false"> Cancel </v-btn>
+        <v-btn text color="primary" @click="$refs.timeMenu.save(time)">
+          OK
+        </v-btn>
+      </v-time-picker>
+    </v-menu>
+    <!-- End Datetime  -->
+
+    <!-- Date picker  -->
+
+    <v-menu
+      ref="dateMenu"
+      v-model="dateMenu"
+      :close-on-content-click="false"
+      :return-value.sync="date"
+    >
+      <template v-slot:activator="{ on }">
+        <v-text-field
+          v-model="date"
+          label="Start Date"
+          prepend-icon="mdi-calendar"
+          v-on="on"
+        >
+        </v-text-field>
+      </template>
+      <v-date-picker v-model="date">
+        <v-spacer></v-spacer>
+        <v-btn text color="primary" @click="dateMenu = false"> Cancel </v-btn>
+        <v-btn text color="primary" @click="$refs.dateMenu.save(date)">
+          OK
+        </v-btn>
+      </v-date-picker>
+    </v-menu>
+    <!-- Time picker  -->
+    <v-menu
+      ref="timeMenu"
+      v-model="timeMenu"
+      :close-on-content-click="false"
+      :return-value.sync="time"
+    >
+      <template #activator="{ on }">
+        <v-text-field
+          v-model="time"
+          label="Start Time"
+          prepend-icon="mdi-calendar"
+          v-on="on"
+        >
+        </v-text-field>
+      </template>
+      <v-time-picker v-model="time">
+        <v-spacer></v-spacer>
+        <v-btn text color="primary" @click="timeMenu = false"> Cancel </v-btn>
+        <v-btn text color="primary" @click="$refs.timeMenu.save(time)">
+          OK
+        </v-btn>
+      </v-time-picker>
+    </v-menu>
+  </v-card>
 </template>
 <script>
 export default {
