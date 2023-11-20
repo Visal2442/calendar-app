@@ -108,8 +108,7 @@
                   <v-btn icon>
                     <v-icon>mdi-pencil</v-icon>
                   </v-btn>
-                  <v-toolbar-title
-                  >{{ selectedEvent.name }}</v-toolbar-title>
+                  <v-toolbar-title>{{ selectedEvent.name }}</v-toolbar-title>
                   <v-spacer></v-spacer>
                   <v-btn icon>
                     <v-icon>mdi-heart</v-icon>
@@ -132,16 +131,27 @@
         </v-col>
       </v-row>
     </v-main>
-    <DateTimePicker></DateTimePicker>
+    <v-dialog ref="dateTimeStart" width="300px">
+      <template #activator="{ on }">
+        <v-text-field
+          v-on="on"
+          prepend-icon="mdi-calendar"
+          label="Start DateTime"
+          width="300px"
+        ></v-text-field>
+      </template>
+      <DateTimePicker @input="$refs.dateTimeStart.save()"></DateTimePicker>
+    </v-dialog>
   </v-app>
 </template>
 
 <script>
-import { mapState } from 'vuex';
-import DateTimePicker from './items/DateTimePicker.vue'
+import { mapState } from "vuex";
+import DateTimePicker from "./items/DateTimePicker.vue";
 
 export default {
   data: () => ({
+    isDialog: true,
     focus: "",
     type: "month",
     typeToLabel: {
@@ -174,8 +184,9 @@ export default {
       "Party",
     ],
   }),
-  computed:{
-    ...mapState('calendar', ['event'])
+  computed: {
+    ...mapState("calendar", ["event"]),
+    
   },
   mounted() {
     this.$refs.calendar.checkChange();
@@ -203,7 +214,7 @@ export default {
       const open = () => {
         this.selectedEvent = event;
         this.selectedElement = nativeEvent.target;
-        this.selectedOpen=true
+        this.selectedOpen = true;
         requestAnimationFrame(() =>
           requestAnimationFrame(() => (this.selectedOpen = true))
         );
@@ -219,7 +230,6 @@ export default {
       nativeEvent.stopPropagation();
     },
     updateRange({ start, end }) {
-
       // console.log(new Date());
       const events = [];
 
@@ -246,7 +256,7 @@ export default {
           end: second,
           color: this.colors[this.rnd(0, this.colors.length - 1)],
           timed: true,
-          allDay:true
+          allDay: true,
         });
       }
 
@@ -256,8 +266,8 @@ export default {
       return Math.floor((b - a + 1) * Math.random()) + a;
     },
   },
-  components:{
-    DateTimePicker
-  }
+  components: {
+    DateTimePicker,
+  },
 };
 </script>
